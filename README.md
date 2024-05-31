@@ -1,5 +1,9 @@
 # Discord Game SDK for Python
 
+> Notice 2024/05/31
+> Discord's Game SDK has been largely deprecated, and I don't have the bandwidth to maintain the project so I am choosing to archive it.
+> Feel free to fork or email me if you'd like to maintain the project.
+
 A Python wrapper around Discord's Game SDK.
 
 **NOTE**: This is entirely experimental, and may not work as intended. Please report all bugs to the [GitHub issue tracker](https://github.com/LennyPhoenix/py-discord-sdk/issues).
