@@ -1,4 +1,5 @@
 import ctypes
+import pathlib
 import typing as t
 
 from . import sdk
@@ -23,7 +24,7 @@ class Discord:
 
     core: sdk.IDiscordCore = None
 
-    def __init__(self, client_id: int, flags: CreateFlags):
+    def __init__(self, client_id: int, flags: CreateFlags, sdk_location: pathlib.Path):
         self._garbage = []
 
         self._activity_manager = ActivityManager()
@@ -61,7 +62,8 @@ class Discord:
 
         pointer = ctypes.POINTER(sdk.IDiscordCore)()
 
-        result = Result(sdk.DiscordCreate(version, ctypes.pointer(params), ctypes.pointer(pointer)))
+        discord_instance = sdk.create_discord_instance(sdk_location)
+        result = Result(discord_instance(version, ctypes.pointer(params), ctypes.pointer(pointer)))
         if result != Result.ok:
             raise get_exception(result)
 
